@@ -57,14 +57,13 @@ class CsvSniffer {
         if (delimiter == '\u0000') {
             throw CsvException("Could not determine delimiter")
         }
-        @KotlinCleanup("use a scope function")
-        val dialect = CsvDialect("sniffed")
-        dialect.mDoublequote = doublequote
-        dialect.mDelimiter = delimiter
-        // _csv.reader won't accept a quotechar of ''
-        dialect.mQuotechar = if (quotechar == '\u0000') '"' else quotechar
-        dialect.mSkipInitialSpace = skipinitialspace
-        return dialect
+        return CsvDialect("sniffed").apply {
+            mDoublequote = doublequote
+            mDelimiter = delimiter
+            // _csv.reader won't accept a quotechar of ''
+            mQuotechar = if (quotechar == '\u0000') '"' else quotechar
+            mSkipInitialSpace = skipinitialspace
+        }
     }
 
     @KotlinCleanup("could be further simplified: return if/else, use delimiters.toList()")
