@@ -33,6 +33,7 @@ A semi-official port of the open source [Anki](https://apps.ankiweb.net/index.ht
 - spaced repetition (supermemo 2 algorithm)
 - supported contents: text, images, sounds, MathJax
 - add cards by intent from other applications like dictionaries
+- reading
 
 </div>
 
